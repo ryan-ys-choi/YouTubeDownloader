@@ -22,9 +22,14 @@ def download_video():
         with YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
         print("Video downloaded successfully!")
+        # Show a popup message
+        messagebox.showinfo("Success", "Video downloaded successfully!")
     except Exception as e:
         print(f"Error occurred: {e}")
-
+        # Show a popup message
+        messagebox.showerror(("Error", f"An error occurred: {e}"))
+        
+        
 # Create the main application window
 root = tk.Tk()
 root.title("YouTube Video Downloader")
@@ -34,8 +39,8 @@ label = tk.Label(root, text="Enter YouTube Video URL:")
 label.pack(pady=5)
 
 # INput field for the URL
-url_entry = tk.Entry(root, width=50)
-url_entry.pack(pady=5)
+url_entry = tk.Entry(root, width=40)
+url_entry.pack(pady=5, padx=10)
 
 # Download button
 download_button = tk.Button(root, text="Downlaod", command=download_video)
